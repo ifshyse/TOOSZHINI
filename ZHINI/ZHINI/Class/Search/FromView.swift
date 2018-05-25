@@ -21,35 +21,35 @@ class FromView:UIView {
     }
     
     init(point:CGPoint,height:CGFloat, text:String, img:String?, needBorder:Bool, hexColor:Int) {
-        let width = width_for_text(text, font: FROM_SEARCH_FONTSIZE, height: height);
+        let width = width_for_text(textStr: text, font: FROM_SEARCH_FONTSIZE, height: height);
         var imgWidth:CGFloat = 0;
         if img != nil {
-            if img!.characters.count > 0 {
+            if img!.count > 0 {
                 imgWidth = FROM_IMG_WIDTH;
             }
         }
-        super.init(frame: CGRectMake(point.x, point.y, 3*FROM_CAP_WIDTH + width + imgWidth, height));
-        label = UILabel.init(frame: CGRectMake(FROM_CAP_WIDTH, 0, width, height));
-        label.textAlignment = .Center;
+        super.init(frame:CGRect.init(x:point.x, y:point.y, width:3*FROM_CAP_WIDTH + width + imgWidth, height:height));
+        label = UILabel.init(frame:CGRect.init(x:FROM_CAP_WIDTH, y:0, width:width, height:height));
+        label.textAlignment = .center;
         label.font = FROM_SEARCH_FONTSIZE;
         label.text = text;
-        label.textColor = rgbColor_FromHex(hexColor);
+        label.textColor = rgbColor_FromHex(rgbValue: hexColor);
         self.addSubview(label);
         
         if img != nil {
-            if img!.characters.count > 0 {
-                imgView = UIImageView.init(frame: CGRectMake(label.frame.origin.x + label.frame.size.width + FROM_CAP_WIDTH, (height - FROM_IMG_WIDTH)/2.0, imgWidth, imgWidth));
+            if img!.count > 0 {
+                imgView = UIImageView.init(frame: CGRect.init(x:label.frame.origin.x + label.frame.size.width + FROM_CAP_WIDTH, y:(height - FROM_IMG_WIDTH)/2.0, width:imgWidth, height:imgWidth));
                 imgView!.image = UIImage(named: "header");
                 imgView!.layer.cornerRadius = 1;
                 imgView!.layer.borderWidth = 0.5;
-                imgView!.layer.borderColor = BORDER_COLOR.CGColor;
+                imgView!.layer.borderColor = BORDER_COLOR.cgColor;
                 imgView!.clipsToBounds = true;
                 self.addSubview(imgView!);
             }
         }
         
         if needBorder {
-            self.layer.borderColor = rgbColor_FromHex(hexColor).CGColor;
+            self.layer.borderColor = rgbColor_FromHex(rgbValue: hexColor).cgColor;
             self.layer.cornerRadius = 2;
             self.layer.borderWidth = 0.5;
         }else {

@@ -28,38 +28,38 @@ class CommonView:UIControl {
         super.init(frame: frame);
         self.commonInfo = commonInfo;
         
-        imgView = UIImageView.init(frame: CGRectMake(0, 0, CVIEW_WIDTH, frame.size.height));
+        imgView = UIImageView.init(frame: CGRect.init(x: 0, y: 0, width: CVIEW_WIDTH, height: frame.size.height));
         imgView.image = UIImage(named: self.commonInfo.img_url);
         self.addSubview(imgView)
         
         var fromWidth:CGFloat = 0.0;
         if self.commonInfo.from != nil {
             let from = self.commonInfo.from![0] as! FromInfo;
-            if from.from_title.characters.count > 0 {
-                fromWidth = width_for_text(from.from_title, font: COMMON_SEARCH_FONTSIZE, height: frame.size.height);
+            if from.from_title.count > 0 {
+                fromWidth = width_for_text(textStr: from.from_title, font: COMMON_SEARCH_FONTSIZE, height: frame.size.height);
             }
         }
         
-        titleLb = UILabel.init(frame: CGRectMake(CVIEW_WIDTH + CVIEW_CAP_WIDTH, (frame.size.height - CVIEW_TITLE_HEIGHT)/2.0, frame.size.width - CVIEW_WIDTH - 2*CVIEW_CAP_WIDTH - fromWidth, CVIEW_TITLE_HEIGHT));
+        titleLb = UILabel.init(frame: CGRect.init(x:CVIEW_WIDTH + CVIEW_CAP_WIDTH, y:(frame.size.height - CVIEW_TITLE_HEIGHT)/2.0, width:frame.size.width - CVIEW_WIDTH - 2*CVIEW_CAP_WIDTH - fromWidth, height:CVIEW_TITLE_HEIGHT));
         titleLb.text = self.commonInfo.title;
         titleLb.font = COMMON_SEARCH_FONTSIZE;
         titleLb.textColor = TITLE_SEARCH_COLOR;
-        titleLb.textAlignment = .Center;
+        titleLb.textAlignment = .center;
         self.addSubview(titleLb);
         
         if fromWidth > 0 {
             
             let from = self.commonInfo.from![0] as! FromInfo;
             
-            fromLb = UILabel.init(frame: CGRectMake(frame.size.width - fromWidth - CVIEW_CAP_WIDTH, (frame.size.height - CVIEW_TITLE_HEIGHT)/2.0, fromWidth, CVIEW_TITLE_HEIGHT));
+            fromLb = UILabel.init(frame: CGRect.init(x:frame.size.width - fromWidth - CVIEW_CAP_WIDTH, y:(frame.size.height - CVIEW_TITLE_HEIGHT)/2.0, width:fromWidth, height:CVIEW_TITLE_HEIGHT));
             fromLb!.text = from.from_title;
             fromLb!.font = COMMON_SEARCH_FONTSIZE;
             fromLb!.textColor = TITLE_SEARCH_COLOR;
-            fromLb!.textAlignment = .Center;
+            fromLb!.textAlignment = .center;
             self.addSubview(fromLb!);
         }
         
-        self.layer.borderColor = BORDER_COLOR.CGColor;
+        self.layer.borderColor = BORDER_COLOR.cgColor;
         self.layer.cornerRadius = 2.0;
         self.layer.borderWidth = 0.5;
     }

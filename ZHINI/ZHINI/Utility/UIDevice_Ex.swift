@@ -12,8 +12,8 @@ import UIKit
 public extension UIDevice {
     
     public func isX() -> Bool {
-        if UIScreen.instancesRespondToSelector(Selector("currentMode")) {
-            if CGSizeEqualToSize(CGSizeMake(1125, 2436), (UIScreen.mainScreen().currentMode?.size)!) {
+        if UIScreen.instancesRespond(to: #selector(getter: UIScreen.currentMode)) {
+            if CGSize.init(width:1125, height:2436).equalTo((UIScreen.main.currentMode?.size)!) {
                 return true
             }
         }
@@ -25,7 +25,7 @@ public extension UIDevice {
         uname(&systemInfo)
         let machineMirror = Mirror(reflecting: systemInfo.machine)
         let identifier = machineMirror.children.reduce("") { identifier, element in
-            guard let value = element.value as? Int8 where value != 0 else { return identifier }
+            guard let value = element.value as? Int8, value != 0 else { return identifier }
             return identifier + String(UnicodeScalar(UInt8(value)))
         }
         

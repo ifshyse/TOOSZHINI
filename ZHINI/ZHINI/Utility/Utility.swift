@@ -14,11 +14,11 @@ public func showDisplayViewController(superViewController:UIViewController, cont
     superViewController.addChildViewController(contentViewController);
     superViewController.view.addSubview(contentViewController.view);
     contentViewController.view.frame = superViewController.view.bounds;
-    contentViewController.didMoveToParentViewController(superViewController);
+    contentViewController.didMove(toParentViewController: superViewController);
 }
 
 public func hideDisplayViewController(superViewController:UIViewController, contentViewController:UIViewController) {
-    contentViewController.willMoveToParentViewController(nil);
+    contentViewController.willMove(toParentViewController: nil);
     contentViewController.view.removeFromSuperview();
     contentViewController.removeFromParentViewController();
 }
@@ -37,30 +37,30 @@ func rgbColor_FromHex(rgbValue: Int) -> (UIColor) {
 }
 
 public func height_for_text(textStr:String,font:UIFont,width:CGFloat) -> CGFloat {
-    let normalText: NSString = textStr
-    let size = CGSizeMake(width,CGFloat(MAXFLOAT))
-    let dic = NSDictionary(object: font, forKey: NSFontAttributeName)
-    let stringSize = normalText.boundingRectWithSize(size, options: .UsesLineFragmentOrigin, attributes: dic as? [String : AnyObject], context:nil).size
+    let normalText: NSString = textStr as NSString
+    let size = CGSize.init(width: width, height: CGFloat(MAXFLOAT))
+    let dic = NSDictionary(object: font, forKey: kCTFontAttributeName as! NSCopying)
+    let stringSize = normalText.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: dic as? [NSAttributedStringKey : Any], context:nil).size
     return stringSize.height
 }
 
 public func width_for_text(textStr:String,font:UIFont,height:CGFloat) -> CGFloat {
-    let normalText: NSString = textStr
-    let size = CGSizeMake(CGFloat(MAXFLOAT),height)
-    let dic = NSDictionary(object: font, forKey: NSFontAttributeName)
-    let stringSize = normalText.boundingRectWithSize(size, options: .UsesLineFragmentOrigin, attributes: dic as? [String : AnyObject], context:nil).size
+    let normalText: NSString = textStr as NSString
+    let size = CGSize.init(width: CGFloat(MAXFLOAT), height: height)
+    let dic = NSDictionary(object: font, forKey: kCTFontAttributeName as! NSCopying)
+    let stringSize = normalText.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: dic as? [NSAttributedStringKey : Any], context:nil).size
     return stringSize.width
 }
 
 public func dateStringFromTimeStamp(timeStamp:Double) -> String {
-    let timeInterval:NSTimeInterval = NSTimeInterval(timeStamp);
+    let timeInterval:TimeInterval = TimeInterval(timeStamp);
     let date = NSDate(timeIntervalSince1970: timeInterval);
     let now = NSDate();
-    let time = now.timeIntervalSinceDate(date)
+    let time = now.timeIntervalSince(date as Date)
     if time > 4*86400 {
-        let dformatter = NSDateFormatter()
+        let dformatter = DateFormatter()
         dformatter.dateFormat = "yyyy.MM.dd"
-        return ("\(dformatter.stringFromDate(date))")
+        return ("\(dformatter.string(from: date as Date))")
     }else if time < 4*86400 && time >= 3*86400 {
         return "三天前"
     }else if time < 3*86400 && time >= 2*86400 {
@@ -74,7 +74,7 @@ public func dateStringFromTimeStamp(timeStamp:Double) -> String {
         let minute = time / 60;
         return ("\(minute)分钟前")
     }else if time < 60 {
-        let sec = time % 60;
+        let sec = (Int)(time) % 60;
         return ("\(sec)秒钟前")
     }
     return "";

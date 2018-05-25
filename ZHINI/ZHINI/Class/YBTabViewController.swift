@@ -31,7 +31,7 @@ class YBTabViewController: UITabBarController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         
     }
     
@@ -49,7 +49,7 @@ class YBTabViewController: UITabBarController {
         self.tabBar.tintColor = TEXT_COLOR;
     }
     
-    override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
-        self.ybprotocol!.setNavigationTitle(item.title!);
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        self.ybprotocol!.setNavigationTitle(title: item.title!);
     }
 }

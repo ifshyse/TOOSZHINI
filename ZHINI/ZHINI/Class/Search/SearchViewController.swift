@@ -25,21 +25,21 @@ ListCellDelegate
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         var height:CGFloat = 0.0;
-        if(UIDevice.currentDevice().isX()) {
+        if(UIDevice.current.isX()) {
             height = 88.0;
         }else {
             height = 64.0;
         }
-        tableView = ListView.init(frame: CGRectMake(0, height, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height - height - 50), style:UITableViewStyle.Plain);
+        tableView = ListView.init(frame: CGRect.init(x:0.0, y:height, width:UIScreen.main.bounds.size.width, height:UIScreen.main.bounds.size.height - height - 50), style:UITableViewStyle.plain);
         tableView.delegate = self;
         tableView.dataSource = self;
-        tableView!.registerClass(ListCell.self,
+        tableView!.register(ListCell.self,
             forCellReuseIdentifier: "ListCell");
         self.view.addSubview(tableView);
         
-        header.setRefreshingTarget(self, refreshingAction: Selector("headerRefresh"))
+        header.setRefreshingTarget(self, refreshingAction: Selector(("headerRefresh")))
         tableView.mj_header = header
-        tableView.footerViewForSection(0);
+        tableView.footerView(forSection: 0);
         
         debug();
     }
@@ -130,35 +130,35 @@ ListCellDelegate
         // Dispose of any resources that can be recreated.
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return list.count
     }
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let listData:SearchListInfo = self.list[indexPath.row] as! SearchListInfo;
-        return ListCell.height_For_listData(listData);
+        return ListCell.height_For_listData(listData: listData);
     }
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ListCell") as! ListCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell") as! ListCell
         cell.delegate = self;
         let listData:SearchListInfo = self.list[indexPath.row] as! SearchListInfo;
-        cell.setData(listData);
+        cell.setData(listData: listData);
         return cell
     }
     
-    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        if cell.respondsToSelector("UIView.layoutMargins") {
-            cell.layoutMargins = UIEdgeInsets.init()
-        }
-        if cell.respondsToSelector("UITableViewCell.separatorInset") {
-            cell.separatorInset = UIEdgeInsets.init()
-        }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        if cell.respondsToSelector("UIView.layoutMargins") {
+//            cell.layoutMargins = UIEdgeInsets.init()
+//        }
+//        if cell.respondsToSelector("UITableViewCell.separatorInset") {
+//            cell.separatorInset = UIEdgeInsets.init()
+//        }
     }
     
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canFocusRowAt indexPath: IndexPath) -> Bool {
         return false
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
     }
     

@@ -19,8 +19,8 @@ class YBNavigationBar : UINavigationBar {
     
     override init(frame: CGRect) {
         super.init(frame: frame);
-        label = UILabel.init(frame: CGRectMake(BTN_WIDTH + CAP, SCREEN_CAP + (frame.size.height - SCREEN_CAP - LABEL_HEIGHT)/2.0, frame.size.width - 2*(BTN_WIDTH + CAP), LABEL_HEIGHT));
-        label.textAlignment = .Center;
+        label = UILabel.init(frame: CGRect.init(x:BTN_WIDTH + CAP, y:SCREEN_CAP + (frame.size.height - SCREEN_CAP - LABEL_HEIGHT)/2.0, width:frame.size.width - 2*(BTN_WIDTH + CAP), height:LABEL_HEIGHT));
+        label.textAlignment = .center;
         label.font = TEXT_FONTSIZE;
         label.textColor = TEXT_COLOR;
         self.addSubview(label);
@@ -29,7 +29,7 @@ class YBNavigationBar : UINavigationBar {
         fatalError("init(coder:) has not been implemented")
     }
     func setBackgroundViewColor(r:CGFloat, g:CGFloat, b:CGFloat) {
-        let color = rgbColor(r, g, b);
+        let color = rgbColor(r:r, g, b);
         self.backgroundColor = color;
     }
     
