@@ -69,7 +69,7 @@ class ListCell: UITableViewCell {
         
         cancelContentBtn = UIButton.init(frame: CGRect.init(x:UIScreen.main.bounds.size.width - (LIST_CAP_WIDTH + CANCEL_CONTACT_BTN_WIDTH), y:LIST_CAP_WIDTH, width:CANCEL_CONTACT_BTN_WIDTH, height:20));
         cancelContentBtn.setImage(UIImage(named: "cancel_contact"), for: .normal);
-        cancelContentBtn.addTarget(self, action: Selector(("cancelContact:")), for: .touchUpInside);
+        cancelContentBtn.addTarget(self, action: #selector(cancelContact), for: .touchUpInside);
         self.contentView.addSubview(cancelContentBtn);
         
         titleLb = UILabel.init(frame: CGRect.init(x:LIST_CAP_WIDTH, y:editorImgView.frame.origin.y + editorImgView.frame.size.height + LIST_CAP_WIDTH/2.0, width:UIScreen.main.bounds.size.width - 2*LIST_CAP_WIDTH, height:23));
@@ -347,7 +347,7 @@ class ListCell: UITableViewCell {
         self.layoutSubviews();
     }
     
-    func cancelContact(button:UIButton) {
+    @objc func cancelContact(button:UIButton) {
         self.delegate?.cancelContact(listId: (listInfo?.sourceId)!);
     }
     

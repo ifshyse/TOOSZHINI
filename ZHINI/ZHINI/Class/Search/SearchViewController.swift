@@ -37,7 +37,7 @@ ListCellDelegate
             forCellReuseIdentifier: "ListCell");
         self.view.addSubview(tableView);
         
-        header.setRefreshingTarget(self, refreshingAction: Selector(("headerRefresh")))
+        header.setRefreshingTarget(self, refreshingAction: #selector(headerRefresh))
         tableView.mj_header = header
         tableView.footerView(forSection: 0);
         
@@ -120,7 +120,7 @@ ListCellDelegate
         list = [searchInfo1]
     }
     
-    func headerRefresh(){
+    @objc func headerRefresh(){
         print("下拉刷新")
         tableView.mj_header.endRefreshing()
     }
