@@ -67,6 +67,10 @@
 		DC29C16520B8F10500046C5B /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = DC29BF1C20B8F10400046C5B /* MJRefreshComponent.m */; };
 		DC29C20520B8F10500046C5B /* UIScrollView+EmptyDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = DC29C08220B8F10400046C5B /* UIScrollView+EmptyDataSet.m */; };
 		DC31E12920B8F2A600789233 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC29C21220B8F1BC00046C5B /* Alamofire.framework */; };
+		DC31E12C20B90B9500789233 /* ApplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC31E12B20B90B9500789233 /* ApplicationManager.swift */; };
+		DC31E12E20B90BE200789233 /* LocalSettingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC31E12D20B90BE200789233 /* LocalSettingData.swift */; };
+		DC31E13020B90C0800789233 /* DoucumentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC31E12F20B90C0800789233 /* DoucumentManager.swift */; };
+		DC31E13220B90C1C00789233 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC31E13120B90C1C00789233 /* NotificationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -221,6 +225,10 @@
 		DC29C08220B8F10400046C5B /* UIScrollView+EmptyDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+EmptyDataSet.m"; sourceTree = "<group>"; };
 		DC29C08320B8F10400046C5B /* UIScrollView+EmptyDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+EmptyDataSet.h"; sourceTree = "<group>"; };
 		DC29C20620B8F1BC00046C5B /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
+		DC31E12B20B90B9500789233 /* ApplicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationManager.swift; sourceTree = "<group>"; };
+		DC31E12D20B90BE200789233 /* LocalSettingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalSettingData.swift; sourceTree = "<group>"; };
+		DC31E12F20B90C0800789233 /* DoucumentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoucumentManager.swift; sourceTree = "<group>"; };
+		DC31E13120B90C1C00789233 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -301,6 +309,7 @@
 				DC29BE0B20B8F10400046C5B /* ThirdParites */,
 				71905F56208F447200DB66A6 /* CommonClass */,
 				71905F6A208F447200DB66A6 /* Utility */,
+				DC31E12A20B90B7C00789233 /* Common */,
 				71905F64208F447200DB66A6 /* HttpService */,
 				71905F46208F447200DB66A6 /* Class */,
 				71905F42208F447200DB66A6 /* LaunchScreen.storyboard */,
@@ -541,6 +550,17 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		DC31E12A20B90B7C00789233 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				DC31E12B20B90B9500789233 /* ApplicationManager.swift */,
+				DC31E12D20B90BE200789233 /* LocalSettingData.swift */,
+				DC31E12F20B90C0800789233 /* DoucumentManager.swift */,
+				DC31E13120B90C1C00789233 /* NotificationManager.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		DC713A4820B797D800DA9406 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -753,6 +773,7 @@
 				DC29C15820B8F10500046C5B /* MJRefreshBackGifFooter.m in Sources */,
 				DC29C15C20B8F10500046C5B /* MJRefreshAutoGifFooter.m in Sources */,
 				DC29C15320B8F10500046C5B /* UIScrollView+MJRefresh.m in Sources */,
+				DC31E13020B90C0800789233 /* DoucumentManager.swift in Sources */,
 				DC29C15920B8F10500046C5B /* MJRefreshBackStateFooter.m in Sources */,
 				71905F74208F447200DB66A6 /* AddViewController.swift in Sources */,
 				71905F79208F447200DB66A6 /* FromView.swift in Sources */,
@@ -763,16 +784,19 @@
 				71905F88208F447200DB66A6 /* SearchListInfo.swift in Sources */,
 				DC29C16220B8F10500046C5B /* MJRefreshHeader.m in Sources */,
 				71905F80208F447200DB66A6 /* BookInfo.swift in Sources */,
+				DC31E12E20B90BE200789233 /* LocalSettingData.swift in Sources */,
 				71905F89208F447200DB66A6 /* VideoInfo.swift in Sources */,
 				71905F8A208F447200DB66A6 /* HttpClient.swift in Sources */,
 				DC29C20520B8F10500046C5B /* UIScrollView+EmptyDataSet.m in Sources */,
 				71905F70208F447200DB66A6 /* AppDelegate.swift in Sources */,
 				71905F7E208F447200DB66A6 /* AdmireInfo.swift in Sources */,
 				71905F8E208F447200DB66A6 /* Common.swift in Sources */,
+				DC31E13220B90C1C00789233 /* NotificationManager.swift in Sources */,
 				71905F83208F447200DB66A6 /* ContentInfo.swift in Sources */,
 				71905F8C208F447200DB66A6 /* MainViewController.swift in Sources */,
 				71905F76208F447200DB66A6 /* MineViewController.swift in Sources */,
 				DC29C16520B8F10500046C5B /* MJRefreshComponent.m in Sources */,
+				DC31E12C20B90B9500789233 /* ApplicationManager.swift in Sources */,
 				71905F7A208F447200DB66A6 /* ListCell.swift in Sources */,
 				71905F85208F447200DB66A6 /* FromInfo.swift in Sources */,
 				71905F7F208F447200DB66A6 /* AudioInfo.swift in Sources */,
